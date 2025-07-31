@@ -7,11 +7,12 @@
 
   <!-- Spawn Husky with sensors -->
   <arg name="robot_namespace" default="/"/>
+  <arg name="sensor_arch" default="1"/>
   <arg name="realsense_enabled" default="1"/>
-  <arg name="realsense_xyz" default="0.35 0 0" />
+  <arg name="realsense_xyz" default="0 0 0" />
   <arg name="realsense_rpy" default="0 0 0" />
 
-  <param name="robot_description" command="$(find xacro)/xacro '$(find husky_slam)/urdf/husky.urdf.xacro' robot_namespace:=$(arg robot_namespace) realsense_enabled:=$(arg realsense_enabled) realsense_xyz:='$(arg realsense_xyz)' realsense_rpy:='$(arg realsense_rpy)'" />
+  <param name="robot_description" command="$(find xacro)/xacro '$(find husky_slam)/urdf/husky.urdf.xacro' robot_namespace:=$(arg robot_namespace) sensor_arch:=$(arg sensor_arch) realsense_enabled:=$(arg realsense_enabled) realsense_xyz:='$(arg realsense_xyz)' realsense_rpy:='$(arg realsense_rpy)'" />
 
   <!-- Launch RViz with husky.rviz config -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find husky_slam)/rviz/husky.rviz" output="screen" />
